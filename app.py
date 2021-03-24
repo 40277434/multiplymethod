@@ -6,13 +6,11 @@ app = Flask(__name__)
 def multiply(x, y):
     return int(x) * int(y);
 
+@app.route('/')
 
-@app.route('/<x>/<y>')
-@app.route('/index/<x>/<y>')
-@app.route('/home/<x>/<y>')
-def hello_world(x,y):
-    #x = request.args.get('x')
-    #y = request.args.get('y')
+def hello_world():
+    x = request.args.get('x')
+    y = request.args.get('y')
     if(x.isdigit() and y.isdigit()):
         result = dict()
         result['answer'] = multiply(x, y)
@@ -46,5 +44,4 @@ def demo2(e):
 
 
 if __name__ == '__main__':
-     app.run()
-    #app.run(host='0.0.0.0', port=80)
+     app.run(host='0.0.0.0', port=80)

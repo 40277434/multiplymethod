@@ -11,12 +11,17 @@ def multiply(x, y):
 def hello_world():
     x = request.args.get('x')
     y = request.args.get('y')
+    result = dict()
+
     if(x.isdigit() and y.isdigit()):
-        result = dict()
-        result['answer'] = multiply(x, y)
-        return result
+        answer=multiply(x, y)
+        result['answer'] =answer
+        result['error']=False
+        result['string']="%s*%s=%s"%(x,y,answer)
     else :
-        return demo2
+        result['reason'] ="X and Y must be digits"
+        result['error']=True
+    return result
 
 
 @app.route('/demo0')

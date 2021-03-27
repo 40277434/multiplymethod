@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  multiplymethod:
+    image: 40277434/webcalc-multiply
+    container_name: multiply-container
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80

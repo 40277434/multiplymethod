@@ -12,15 +12,18 @@ def hello_world():
     x = request.args.get('x')
     y = request.args.get('y')
     result = dict()
-
-    if(x.isdigit() and y.isdigit()):
-        answer=multiply(x, y)
-        result['answer'] =answer
-        result['error']=False
-        result['string']="%s*%s=%s"%(x,y,answer)
-    else :
+    try:
+        if(x.isdigit() and y.isdigit()):
+            answer=multiply(x, y)
+            result['answer'] =answer
+            result['error']=False
+            result['string']="%s*%s=%s"%(x,y,answer)
+        else :
+            result['reason'] ="X and Y must be digits"
+            result['error']=True
+    except:
         result['reason'] ="X and Y must be digits"
-        result['error']=True
+        result['error']=True        
     return result
 
 
